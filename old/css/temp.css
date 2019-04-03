@@ -1,0 +1,221 @@
+
+/* about style*/
+.about .container{
+	margin-bottom: 161px;
+}
+
+.about h1{
+	color:#F97300;
+	margin: 2em;
+}
+.about img{
+	height: 100%;
+    width: 100%;
+    border-radius: 50%
+}
+.about span{
+	display: block;
+	color: #888;
+	position: absolute;
+	left: 115px;
+}
+.about .desc{
+	padding: 2em;
+	border-left:4px solid #10828C;
+}
+.about .desc h3{
+	color: #10828C;
+}
+.about .desc p{
+	line-height:2;
+	color:#888;
+}
+
+/* program style*/
+
+.program h1{
+	color:#F97300;
+	margin: 2em;
+}
+
+.program .desc{
+	padding: 2em;
+}
+
+.program .desc h3{
+	color: #10828C;
+}
+
+.program .desc h4{
+	color: rgb(16, 66, 140);
+}
+
+.program .desc p{
+	line-height:2;
+	color:#888;
+}
+
+/* FAQ style */
+
+.faq h1{
+	color: black;
+	margin: 2em;
+	font-weight: bold;
+}
+
+.faq .desc{
+	padding: 1em;
+}
+
+.faq .desc h3{
+	color: rgb(56, 56, 56);
+}
+
+.faq .desc p{
+	line-height:2;
+	color:#888;
+}
+
+/* Payment style*/
+.payment{
+	height : 960px;
+}
+
+.payment .container{
+	margin-top: 173px;
+}
+
+.payment .card h2{
+	color: white;
+	font-weight: bold;
+}
+
+.payment .card span{
+	font-family:helvetica neue; 
+	color:#2d5c88;
+}
+
+.payment .card .list-group-item{
+	font-size:16px; 
+	color:#000000;
+	text-align: center;
+}
+
+
+.team{
+	margin: 4em 0;
+	position: relative;
+
+}
+.team h1{
+	color:#F97300;
+	margin: 2em;	
+}
+.team .item{
+	position: relative;
+	overflow: hidden;	
+}
+.team .des{
+	background: #F97300;
+	color: #fff;
+	text-align: center;
+	border-top-right-radius: 93%;
+	transition:.3s ease-in-out;
+	position: absolute;
+	width: 88%;
+	bottom: 24px;
+
+
+}
+.team .item:hover .des{
+	height: 100%;
+	background:#f973007d;
+    position: absolute;
+	width: 89%;
+	padding: 5em;
+	top: 0;
+	border-top-right-radius: 0;
+} */
+.contact-form{
+	margin: 6em 0;
+	position: relative;		
+}
+
+.contact-form h1{
+	padding:2em 1px;
+	color: #F97300; 
+}
+.contact-form .right{
+	max-width: 600px;
+}
+.contact-form .right .btn-secondary{
+	background:  #F97300;
+	color: #fff;
+	border:0;
+}
+.contact-form .right .form-control::placeholder{
+	color: #888;
+	font-size: 16px;
+}
+
+
+/*Portfolio*/
+/* .portfolio{
+	margin: 4em 0;
+    position: relative;	
+}
+.portfolio h1{
+	color:#F97300;
+	margin: 2em;	
+}
+.portfolio img{
+	 height: 15rem;
+	 width: 100%;
+	 margin: 1em;
+
+	
+
+} */
+
+
+
+/* payment modal style */
+.paymentModal .modal-header {
+    background-color: lightgray;
+}
+
+.paymentModal .payment-title {
+    margin-top: 9px;
+    text-align: center;
+}
+
+.paymentModal .modal-title {
+    font-weight: bold;
+}
+
+.paymentModal .modal-header img {
+    min-width: 180px;
+}
+
+.paymentModal .form-control.error {
+    border-color: red;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+}
+
+.paymentModal label{
+	font-weight: bold;
+}
+
+.paymentModal label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.paymentModal .payment-errors {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}

@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body{
+	padding: 0;
+	margin: 0;
+	background:lightgoldenrodyellow;
+}
+
+html,h1,h2,h3,h4,h5,h6,a{
+	font-family: "Raleway";
+}
+.navbar{
+	background:#2987C4;
+}
+.nav-link , .navbar-brand{
+	color: #f4f4f4;
+	cursor: pointer;
+}
+.nav-link{
+	margin-right: 1em !important;
+}
+.nav-link:hover{
+	background: #f4f4f4;
+	color: #f97300;
+}
+.navbar-collapse{
+ justify-content: flex-end;
+}
+.navbar-toggler{
+  background:#fff !important;
+}
+
+.page{
+	background: lightgrey;
+	border: 2px solid #2987C4;
+}
+
+/*header style*/
+.header{
+	position: relative;
+	background-image: url('elecronique.jpg');
+
+	background-size: cover;
+	background-position: center;
+	max-height: 300px;
+}
+
+.section{
+	margin: 7em 0;
+	padding: 1em;
+	position: relative;
+}
+
+/*blog style*/
+
+.blog{
+	margin: 10em 0;
+	position: relative;	
+}
+.blog h1{
+	color:#F97300;
+	margin: 2em;	
+}
+.blog .card{
+	box-shadow: 0 0 20px #ccc;
+}
+.blog .card img{
+	width: 100%;
+	height: 12em;
+}
+@media and (max-width: 768px){
+ .team .item img{
+ 	width: 100%;
+ }	
+}
+.blog .card-title{
+	color:#F97300;
+	 
+}
+.blog .card-body{
+	padding: 1em;
+}
+
+/* Footer style */
+.page-footer {
+	border-top: 3px solid #2987C4;
+}
