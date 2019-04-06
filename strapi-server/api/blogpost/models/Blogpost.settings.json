@@ -1,0 +1,37 @@
+{
+  "connection": "default",
+  "collectionName": "blogposts",
+  "info": {
+    "name": "blogpost",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "Titre": {
+      "default": "",
+      "type": "string"
+    },
+    "Contenu": {
+      "default": "",
+      "type": "text"
+    },
+    "Date_de_publication": {
+      "default": "",
+      "type": "date"
+    },
+    "Resume": {
+      "default": "",
+      "type": "text"
+    },
+    "Image_du_post": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

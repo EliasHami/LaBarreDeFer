@@ -1,0 +1,19 @@
+{
+  "connection": "default",
+  "collectionName": "stores",
+  "info": {
+    "name": "store",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "prix": {
+      "default": "",
+      "type": "text"
+    }
+  }
+}
