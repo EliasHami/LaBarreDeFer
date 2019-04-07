@@ -1,6 +1,10 @@
 <template>
   <div>
+    <head>
+	    <title>LaBarreDeFer, on peut tout faire ...</title>
+    </head>
     <Header/>
+    <!-- En important nuxt on a pas besoin d'appeler les librairies (Bootstrap, Vue, ..) -->
     <nuxt/>
   </div>
 </template>

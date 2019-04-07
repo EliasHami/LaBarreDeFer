@@ -1,23 +1,18 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
-const bp_store = new Vuex.Store({
-    state: {
-      List: []
-    },
-    mutations: {
-      add (state, blogpost) {
-        state.List.push(blogpost)
-      },
-      emptyList(state){
-          state.List = []
-      }
-    },
-    getters: {
-        List_getter: state => {
-            return state.List
-        }
-    }
+export const state = () => ({
+  list: [] 
 })
+
+export const mutations = {
+  add (state, blogpost) {
+    state.list.push(blogpost)
+  },
+  emptyList (state){
+    state.list = []
+  }
+}
+
+export const getters = {
+  list_getter: state => {
+      return state.list
+  }
+}
