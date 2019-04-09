@@ -41,9 +41,8 @@ module.exports = {
   ],
 
   css: [
-    '@/assets/main.css'
+    '@/assets/css/main.css'
   ]
-
 
 }
 

@@ -20,7 +20,7 @@
             <li v-for="post in blogposts" :key="post.id" class="card">
               <img :src="post.Image_du_post.url" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">{{ post.Titre }}</h5>
+                <a @click="onClickPost(post.id)">{{ post.Titre }}</a>
                 <p class="card-text">{{ post.Resume || 'Pas de résumé' }}.</p>
               </div>
             </li>
@@ -43,6 +43,11 @@ export default {
       query: ''
     }
   },
+  methods: {
+    onClickPost(id){
+      this.$router.push('/blogposts/'+id)
+    }
+  },
   computed: {
     blogposts() {
       return this.$store.getters['blogposts/list_getter']
@@ -51,12 +56,15 @@ export default {
   // avant de charger la page on récupère les blogposts de strapi et on le commit dans le store
   async fetch({ store }) {
     store.commit('blogposts/emptyList')
+    debugger;
     const response = await strapi.request('post', '/graphql', {
      data: {
        query: `query {
                 blogposts {
                   id
                   Titre
+                  Contenu
+                  Date_de_publication
                   Resume
                   Image_du_post {
                     url
