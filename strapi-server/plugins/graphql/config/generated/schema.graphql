@@ -1,4 +1,4 @@
-type Blogpost {
+type Blogposts {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
@@ -9,7 +9,7 @@ type Blogpost {
   Image_du_post: UploadFile
 }
 
-input BlogpostInput {
+input BlogpostsInput {
   Titre: String
   Contenu: String
   Date_de_publication: DateTime
@@ -17,12 +17,12 @@ input BlogpostInput {
   Image_du_post: ID
 }
 
-input createBlogpostInput {
-  data: BlogpostInput
+input createBlogpostsInput {
+  data: BlogpostsInput
 }
 
-type createBlogpostPayload {
-  blogpost: Blogpost
+type createBlogpostsPayload {
+  blogpost: Blogposts
 }
 
 input createRoleInput {
@@ -31,14 +31,6 @@ input createRoleInput {
 
 type createRolePayload {
   role: UsersPermissionsRole
-}
-
-input createStoreInput {
-  data: StoreInput
-}
-
-type createStorePayload {
-  store: Store
 }
 
 input createUserInput {
@@ -54,12 +46,12 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
-input deleteBlogpostInput {
+input deleteBlogpostsInput {
   where: InputID
 }
 
-type deleteBlogpostPayload {
-  blogpost: Blogpost
+type deleteBlogpostsPayload {
+  blogpost: Blogposts
 }
 
 input deleteRoleInput {
@@ -70,14 +62,6 @@ type deleteRolePayload {
   role: UsersPermissionsRole
 }
 
-input deleteStoreInput {
-  where: InputID
-}
-
-type deleteStorePayload {
-  store: Store
-}
-
 input deleteUserInput {
   where: InputID
 }
@@ -86,7 +70,7 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
-input editBlogpostInput {
+input editBlogpostsInput {
   Titre: String
   Contenu: String
   Date_de_publication: DateTime
@@ -113,10 +97,6 @@ input editRoleInput {
   type: String
   permissions: [ID]
   users: [ID]
-}
-
-input editStoreInput {
-  prix: String
 }
 
 input editUserInput {
@@ -152,15 +132,12 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Blogpost | createBlogpostPayload | updateBlogpostPayload | deleteBlogpostPayload | Store | createStorePayload | updateStorePayload | deleteStorePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Blogposts | createBlogpostsPayload | updateBlogpostsPayload | deleteBlogpostsPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
-  createBlogpost(input: createBlogpostInput): createBlogpostPayload
-  updateBlogpost(input: updateBlogpostInput): updateBlogpostPayload
-  deleteBlogpost(input: deleteBlogpostInput): deleteBlogpostPayload
-  createStore(input: createStoreInput): createStorePayload
-  updateStore(input: updateStoreInput): updateStorePayload
-  deleteStore(input: deleteStoreInput): deleteStorePayload
+  createBlogposts(input: createBlogpostsInput): createBlogpostsPayload
+  updateBlogposts(input: updateBlogpostsInput): updateBlogpostsPayload
+  deleteBlogposts(input: deleteBlogpostsInput): deleteBlogpostsPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -183,10 +160,8 @@ type Mutation {
 }
 
 type Query {
-  blogpost(id: ID!): Blogpost
-  blogposts(sort: String, limit: Int, start: Int, where: JSON): [Blogpost]
-  store(id: ID!): Store
-  stores(sort: String, limit: Int, start: Int, where: JSON): [Store]
+  blogpost(id: ID!): Blogposts
+  blogposts(sort: String, limit: Int, start: Int, where: JSON): [Blogposts]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -207,24 +182,13 @@ input RoleInput {
   users: [ID]
 }
 
-type Store {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  prix: String
-}
-
-input StoreInput {
-  prix: String
-}
-
-input updateBlogpostInput {
+input updateBlogpostsInput {
   where: InputID
-  data: editBlogpostInput
+  data: editBlogpostsInput
 }
 
-type updateBlogpostPayload {
-  blogpost: Blogpost
+type updateBlogpostsPayload {
+  blogpost: Blogposts
 }
 
 input updateRoleInput {
@@ -234,15 +198,6 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
-}
-
-input updateStoreInput {
-  where: InputID
-  data: editStoreInput
-}
-
-type updateStorePayload {
-  store: Store
 }
 
 input updateUserInput {

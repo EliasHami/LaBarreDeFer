@@ -12,3 +12,4 @@ dist
 
 # VSCode
 .vscode
+vscode_workspace.code-workspace

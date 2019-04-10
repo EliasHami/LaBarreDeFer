@@ -1,8 +1,8 @@
 {
-  "name": "client",
+  "name": "labarredefer",
   "version": "1.0.0",
   "description": "Nuxt.js project",
-  "author": "EliasHami <33362128+EliasHami@users.noreply.github.com>",
+  "author": "",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -16,8 +16,7 @@
   "dependencies": {
     "bootstrap-vue": "^2.0.0-rc.10",
     "nuxt": "^2.0.0",
-    "strapi-sdk-javascript": "^0.3.1",
-    "vuex": "^3.1.0"
+    "strapi-sdk-javascript": "^0.3.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
