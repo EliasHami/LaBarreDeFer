@@ -8,6 +8,7 @@
             </p> -->
 
                 <h5>{{ post.Titre }}</h5>
+                <p>{{ post.Contenu }}</p>
         </div>
     </div>
    
@@ -22,7 +23,7 @@ export default {
   computed: {
       post() {
           var idx = this.$route.params.id -1 
-          return this.$store.getters['blogposts/list_getter'][idx]
+          return this.$store.getters['blogposts/get_post_id'](idx)
       }
   }
 }

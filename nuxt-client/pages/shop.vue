@@ -24,7 +24,7 @@
                 <nuxt-link :to="{ path: '/blogposts/' + post.id}" tag="a">
                   {{ post.Titre }}
                 </nuxt-link>
-                <p class="card-text">{{ post.Resume || 'Pas de résumé' }}.</p>
+                <button class="btn btn-primary">Add to card</button>
               </div>
             </li>
           </ul>

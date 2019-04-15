@@ -1,9 +1,10 @@
 <template>  
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <router-link tag="a" class="navbar-brand" to="/" exact>LaBarreDeFer</router-link>
+      <nuxt-link tag="a" class="navbar-brand" :to="'/'">LaBarreDeFer</nuxt-link>
       <ul class="navbar-nav">
-        <router-link tag="a" class="navbar-brand" to="/about" exact>A propos de moi</router-link>
+        <nuxt-link tag="a" class="navbar-brand" :to="'/about'">A propos</nuxt-link>
+        <nuxt-link tag="a" class="navbar-brand" :to="'/shop'">Boutique</nuxt-link>
       </ul>
     </div>
   </nav>

@@ -1,18 +1,20 @@
 export const state = () => ({
-  list: [] 
+  post_list: [] 
 })
 
 export const mutations = {
   add (state, blogpost) {
-    state.list.push(blogpost)
+    state.post_list.push(blogpost)
   },
   emptyList (state){
-    state.list = []
+    state.post_list = []
   }
 }
 
 export const getters = {
-  list_getter: state => {
-      return state.list
-  }
+  get_post_list: state => {
+      return state.post_list
+  },
+  get_post_id: state => index => state.post_list[index]
+
 }

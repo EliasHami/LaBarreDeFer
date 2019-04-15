@@ -2,7 +2,7 @@
   "name": "labarredefer",
   "version": "1.0.0",
   "description": "Nuxt.js project",
-  "author": "",
+  "author": "Hami Elias",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -14,6 +14,7 @@
     "dev-debug": "node --inspect node_modules/nuxt/bin/nuxt.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.10",
     "nuxt": "^2.0.0",
     "strapi-sdk-javascript": "^0.3.1"
