@@ -15,7 +15,7 @@ export const state = () => ({
     get_theme_list: state => {
         return state.theme_list
     },
-    get_theme_id: state => index => state.theme_list[index]
+    get_theme_id: state => theme_id => state.theme_list.find(theme => theme.id === theme_id)
   
   }
   

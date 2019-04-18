@@ -17,8 +17,7 @@ export default {
   },
   computed: {
       post() {
-          var idx = this.$route.params.id -1 
-          return this.$store.getters['blogposts/get_post_id'](idx)
+          return this.$store.getters['blogposts/get_post_id'](this.$route.params.id)
       }
   }
 }

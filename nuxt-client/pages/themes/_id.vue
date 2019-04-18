@@ -4,16 +4,22 @@
         <div class="container">
           <h5>{{ theme.nom_theme }}</h5>
           <p>{{ theme.description }}</p>
-          <!-- On parcours les posts dans le store -->
-          <li v-for="post in posts" :key="post.id" class="card">
-            <img :src="post.Image_du_post.url" class="card-img-top">
-            <div class="card-body">
-              <nuxt-link :to="{ path: '/blogposts/' + post.id}" tag="a">
-                {{ post.Titre }}
-              </nuxt-link>
-              <p class="card-text">{{ post.Resume || 'Pas de résumé' }}.</p>
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="card-columns list-unstyled">
+                <!-- On parcours les posts dans le store avec le bon thème -->
+                <li v-for="post in posts" :key="post.id" class="card">
+                  <img :src="post.Image_du_post.url" class="card-img-top">
+                  <div class="card-body">
+                    <nuxt-link :to="{ path: '/blogposts/' + post.id}" tag="a">
+                      {{ post.Titre }}
+                    </nuxt-link>
+                    <p class="card-text">{{ post.Resume || 'Pas de résumé' }}.</p>
+                  </div>
+                </li>
+              </ul>
             </div>
-          </li>
+          </div>
         </div>
     </div>
    
@@ -24,18 +30,15 @@
 export default {
   validate ({ params }) {
     // Doit être un nombre
-    return /^\d$/.test(params.id)
+    return /^[0-3]$/.test(params.id)
   },
   computed: {
     theme() {
-      var idx = this.$route.params.id -1 
-      return this.$store.getters['themes/get_theme_id'](idx)
+      return this.$store.getters['themes/get_theme_id'](this.$route.params.id);
     },
 
     posts() { 
-      var idx = this.$route.params.id -1 
-      console.log(this.$store.getters['blogposts/get_post_theme'](idx));
-      return this.$store.getters['blogposts/get_post_theme'](idx)
+      return this.$store.getters['blogposts/get_post_theme'](this.$route.params.id);
     }
   }  
 }
