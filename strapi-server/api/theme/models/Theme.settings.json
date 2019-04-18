@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "themes",
+  "info": {
+    "name": "theme",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "nom_theme": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "blogposts": {
+      "collection": "blogposts",
+      "via": "theme"
+    }
+  }
+}

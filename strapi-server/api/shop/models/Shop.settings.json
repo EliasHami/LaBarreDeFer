@@ -1,8 +1,8 @@
 {
   "connection": "default",
-  "collectionName": "blogposts",
+  "collectionName": "shops",
   "info": {
-    "name": "blogposts",
+    "name": "shop",
     "description": ""
   },
   "options": {
@@ -11,31 +11,31 @@
     "comment": ""
   },
   "attributes": {
-    "Titre": {
+    "nom_item": {
       "default": "",
       "type": "string"
     },
-    "Contenu": {
+    "description": {
       "default": "",
       "type": "text"
     },
-    "Date_de_publication": {
+    "quantite_restante": {
       "default": "",
-      "type": "date"
+      "type": "integer"
     },
-    "Resume": {
+    "prix": {
       "default": "",
-      "type": "text"
+      "type": "float"
     },
-    "Image_du_post": {
+    "photos_1": {
       "model": "file",
       "via": "related",
       "plugin": "upload",
       "required": false
     },
-    "theme": {
-      "model": "theme",
-      "via": "blogposts"
+    "categorie": {
+      "default": "",
+      "type": "string"
     }
   }
 }

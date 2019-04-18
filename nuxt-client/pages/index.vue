@@ -5,7 +5,7 @@
     <header class="header">
         <div class="row h-100 align-items-center">
         <div class="col-12 text-center">
-        <h1 class="font-weight-bold">LaBarreDeFer</h1>
+        <h1 class="font-weight-bold">ELECTROSTATIK</h1>
         <p class="lead">On peut tout faire ...</p>
         </div>
             </div>
@@ -49,6 +49,9 @@ export default {
   computed: {
     blogposts() {
       return this.$store.getters['blogposts/get_post_list']
+    },
+    themes() {
+      return this.$store.getters['themes/get_theme_list']
     }
   },
   // avant de charger la page on récupère les blogposts de strapi et on le commit dans le store
@@ -66,11 +69,20 @@ export default {
                   Image_du_post {
                     url
                   }
+                  theme {
+                    id
+                  }
+                }
+                themes {
+                  id
+                  nom_theme
+                  description
                 }
               }`
       } 
     }).then((response) => {
-      // console.log(response.data.blogposts);
+      // add blogposts to store
+      //  console.log(response.data);
       store.commit('blogposts/emptyList');
       response.data.blogposts.forEach(element => {
         element.Image_du_post.url = `${apiURL}${element.Image_du_post.url}`
@@ -79,6 +91,15 @@ export default {
           ...element  // le reste des paramètres de element (element.Titre, element.Contenu, ...)
         })
       });
+      // add themes to store
+      store.commit('themes/emptyList');
+      response.data.themes.forEach(element => {
+        store.commit('themes/add', {
+          id: element.id,
+          ...element
+        })
+      });
+
     })
     .catch(function (error) {
       // handle error

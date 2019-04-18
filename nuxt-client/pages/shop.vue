@@ -1,33 +1,31 @@
 
 <template>
   <div class="container">
-    <!-- header -->
-    <header class="header">
-        <div class="row h-100 align-items-center">
-        <div class="col-12 text-center">
-        <h1 class="font-weight-bold">LaBarreDeFer</h1>
-        <p class="lead">On peut tout faire ...</p>
-        </div>
-            </div>
-    </header>
-
-    <!-- blog section -->
-    <section id="blog">
+    <!-- shop section -->
+    <section id="shop">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
           <ul class="card-columns list-unstyled">
-            <!-- On parcours les posts dans le store -->
-            <li v-for="post in blogposts" :key="post.id" class="card">
-              <img :src="post.Image_du_post.url" class="card-img-top">
+            <li v-for="element in shop" :key="element.id" class="card">
+              <img :src="element.photos_1.url" class="card-img-top">
               <div class="card-body">
-                <!-- <a @click="onClickPost(post.id)">{{ post.Titre }}</a> -->
-                <nuxt-link :to="{ path: '/blogposts/' + post.id}" tag="a">
-                  {{ post.Titre }}
-                </nuxt-link>
+                <!-- <nuxt-link :to="{ path: '/blogposts/' + element.id}" tag="a">
+                  {{ element.nom_item }}
+                </nuxt-link> -->
+                <h5 class="card-title">{{ element.nom_item }}</h5>
+                <p class="card-text">{{ element.description || 'No description provided.' }}</p>
+                <p class="card-text">{{ element.prix }}€</p>
                 <button class="btn btn-primary">Add to card</button>
               </div>
             </li>
           </ul>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Card</h5>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -47,36 +45,37 @@ export default {
     }
   },
   computed: {
-    blogposts() {
-      return this.$store.getters['blogposts/get_post_list']
+    shop() {
+      return this.$store.getters['shop/get_shop_list']
     }
   },
-  // avant de charger la page on récupère les blogposts de strapi et on le commit dans le store
+  
   async fetch({ store }) {
     
     await strapi.request('post', '/graphql', {
      data: {
        query: `query {
-                blogposts {
+                shops {
                   id
-                  Titre
-                  Contenu
-                  Date_de_publication
-                  Resume
-                  Image_du_post {
+                  nom_item
+                  description
+                  quantite_restante
+                  prix
+                  categorie
+                  photos_1 {
                     url
                   }
                 }
               }`
       } 
     }).then((response) => {
-      // console.log(response.data.blogposts);
-      store.commit('blogposts/emptyList');
-      response.data.blogposts.forEach(element => {
-        element.Image_du_post.url = `${apiURL}${element.Image_du_post.url}`
-        store.commit('blogposts/add', {
+    //    console.log(response.data.shops);
+      store.commit('shop/emptyList');
+      response.data.shops.forEach(element => {
+        element.photos_1.url = `${apiURL}${element.photos_1.url}`
+        store.commit('shop/add', {
           id: element.id,
-          ...element  // le reste des paramètres de element (element.Titre, element.Contenu, ...)
+          ...element
         })
       });
     })
@@ -84,49 +83,6 @@ export default {
       // handle error
       console.log(error);
     })
-
-    // ---- avec axios ----
-    // import axios from "axios";
-    // let axiosConfig = {
-    //   headers: {
-    //       'Content-Type': 'application/json'
-
-    //   }
-    // };
-
-    // On return une promesse que nuxt va consommer
-    // return axios({
-    //   method: 'post',
-    //   url: 'http://localhost:1337/graphql',
-    //   data: {
-    //     query:`query {
-    //             blogposts {
-    //               id
-    //               Titre
-    //               Contenu
-    //               Date_de_publication
-    //               Resume
-    //               Image_du_post {
-    //                 url
-    //               }
-    //             }
-    //           }`
-    //   }
-    // }).then((response) => {
-    //   // console.log(response.data.data.blogposts);
-    //   store.commit('blogposts/emptyList');
-    //   response.data.data.blogposts.forEach(element => {
-    //     element.Image_du_post.url = `${apiURL}${element.Image_du_post.url}`
-    //     store.commit('blogposts/add', {
-    //       id: element.id,
-    //       ...element  // le reste des paramètres de element (element.Titre, element.Contenu, ...)
-    //     })
-    //   });
-    // })
-    // .catch(function (error) {
-    //   // handle error
-    //   console.log(error);
-    // })
     
   }
 }

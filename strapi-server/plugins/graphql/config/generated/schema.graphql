@@ -7,6 +7,7 @@ type Blogposts {
   Date_de_publication: DateTime
   Resume: String
   Image_du_post: UploadFile
+  theme: Theme
 }
 
 input BlogpostsInput {
@@ -15,6 +16,7 @@ input BlogpostsInput {
   Date_de_publication: DateTime
   Resume: String
   Image_du_post: ID
+  theme: ID
 }
 
 input createBlogpostsInput {
@@ -31,6 +33,22 @@ input createRoleInput {
 
 type createRolePayload {
   role: UsersPermissionsRole
+}
+
+input createShopInput {
+  data: ShopInput
+}
+
+type createShopPayload {
+  shop: Shop
+}
+
+input createThemeInput {
+  data: ThemeInput
+}
+
+type createThemePayload {
+  theme: Theme
 }
 
 input createUserInput {
@@ -62,6 +80,22 @@ type deleteRolePayload {
   role: UsersPermissionsRole
 }
 
+input deleteShopInput {
+  where: InputID
+}
+
+type deleteShopPayload {
+  shop: Shop
+}
+
+input deleteThemeInput {
+  where: InputID
+}
+
+type deleteThemePayload {
+  theme: Theme
+}
+
 input deleteUserInput {
   where: InputID
 }
@@ -76,6 +110,7 @@ input editBlogpostsInput {
   Date_de_publication: DateTime
   Resume: String
   Image_du_post: ID
+  theme: ID
 }
 
 input editFileInput {
@@ -97,6 +132,21 @@ input editRoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input editShopInput {
+  nom_item: String
+  description: String
+  quantite_restante: Int
+  prix: Float
+  photos_1: ID
+  categorie: String
+}
+
+input editThemeInput {
+  nom_theme: String
+  description: String
+  blogposts: [ID]
 }
 
 input editUserInput {
@@ -132,12 +182,18 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Blogposts | createBlogpostsPayload | updateBlogpostsPayload | deleteBlogpostsPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Blogposts | createBlogpostsPayload | updateBlogpostsPayload | deleteBlogpostsPayload | Shop | createShopPayload | updateShopPayload | deleteShopPayload | Theme | createThemePayload | updateThemePayload | deleteThemePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createBlogposts(input: createBlogpostsInput): createBlogpostsPayload
   updateBlogposts(input: updateBlogpostsInput): updateBlogpostsPayload
   deleteBlogposts(input: deleteBlogpostsInput): deleteBlogpostsPayload
+  createShop(input: createShopInput): createShopPayload
+  updateShop(input: updateShopInput): updateShopPayload
+  deleteShop(input: deleteShopInput): deleteShopPayload
+  createTheme(input: createThemeInput): createThemePayload
+  updateTheme(input: updateThemeInput): updateThemePayload
+  deleteTheme(input: deleteThemeInput): deleteThemePayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -162,6 +218,10 @@ type Mutation {
 type Query {
   blogpost(id: ID!): Blogposts
   blogposts(sort: String, limit: Int, start: Int, where: JSON): [Blogposts]
+  shop(id: ID!): Shop
+  shops(sort: String, limit: Int, start: Int, where: JSON): [Shop]
+  theme(id: ID!): Theme
+  themes(sort: String, limit: Int, start: Int, where: JSON): [Theme]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -182,6 +242,42 @@ input RoleInput {
   users: [ID]
 }
 
+type Shop {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  nom_item: String
+  description: String
+  quantite_restante: Int
+  prix: Float
+  photos_1: UploadFile
+  categorie: String
+}
+
+input ShopInput {
+  nom_item: String
+  description: String
+  quantite_restante: Int
+  prix: Float
+  photos_1: ID
+  categorie: String
+}
+
+type Theme {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  nom_theme: String
+  description: String
+  blogposts(sort: String, limit: Int, start: Int, where: JSON): [Blogposts]
+}
+
+input ThemeInput {
+  nom_theme: String
+  description: String
+  blogposts: [ID]
+}
+
 input updateBlogpostsInput {
   where: InputID
   data: editBlogpostsInput
@@ -198,6 +294,24 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
+}
+
+input updateShopInput {
+  where: InputID
+  data: editShopInput
+}
+
+type updateShopPayload {
+  shop: Shop
+}
+
+input updateThemeInput {
+  where: InputID
+  data: editThemeInput
+}
+
+type updateThemePayload {
+  theme: Theme
 }
 
 input updateUserInput {

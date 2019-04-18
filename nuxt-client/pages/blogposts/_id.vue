@@ -1,14 +1,9 @@
 <template>  
-    <!-- about section -->
-    <div class="section about" id="about">
+    <!-- post section -->
+    <div class="section post" id="post">
         <div class="container">
-            <h1 class="text-center"></h1>
-            <!-- <p>
-                {{ this.$route.params.id }}
-            </p> -->
-
-                <h5>{{ post.Titre }}</h5>
-                <p>{{ post.Contenu }}</p>
+            <h5>{{ post.Titre }}</h5>
+            <p>{{ post.Contenu }}</p>
         </div>
     </div>
    
