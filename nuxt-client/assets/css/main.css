@@ -9,26 +9,6 @@ body{
 html,h1,h2,h3,h4,h5,h6,a{
 	font-family: "Raleway";
 }
-.navbar{
-	background:#2987C4;
-}
-.nav-link , .navbar-brand{
-	color: #f4f4f4;
-	cursor: pointer;
-}
-.nav-link{
-	margin-right: 1em !important;
-}
-.nav-link:hover{
-	background: #f4f4f4;
-	color: #f97300;
-}
-.navbar-collapse{
- justify-content: flex-end;
-}
-.navbar-toggler{
-  background:#fff !important;
-}
 
 .page{
 	background: lightgrey;

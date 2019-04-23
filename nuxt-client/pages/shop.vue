@@ -15,7 +15,7 @@
                 <h5 class="card-title">{{ element.nom_item }}</h5>
                 <p class="card-text">{{ element.description || 'No description provided.' }}</p>
                 <p class="card-text">{{ element.prix }}€</p>
-                <button class="btn btn-primary">Add to card</button>
+                <button class="btn btn-primary" @click="addToCart(element)">Add to card</button>
               </div>
             </li>
           </ul>
@@ -24,6 +24,19 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Card</h5>
+              <p class="card-text">{{ numberOfItems }} items selected:</p>
+              <ul>
+                <li v-for="item in selectedItems" :key="item.id" class="card-text mb-2">
+                  Name: {{ item.nom_item }} (${{ item.prix }}) ({{ item.quantity }})
+                  <button class="btn btn-sm btn-success" @click="addToCart(item)">+</button>
+                  <button class="btn btn-sm btn-warning ml-2" @click="removeFromCart(item)">-</button>                
+                </li>
+              </ul>
+              <h5 class="card-text">
+                Total: ${{ prix }}
+              </h5>
+              <p v-if="!selectedItems.length">Please select some items</p>
+              <button :disabled="!selectedItems.length" class="btn btn-primary">Order</button>
             </div>
           </div>
         </div>
@@ -37,16 +50,27 @@
 import Strapi from 'strapi-sdk-javascript/build/main'
 const apiURL = process.env.API_URL || 'http://localhost:1337'
 const strapi = new Strapi(apiURL)
+import { mapMutations } from 'vuex'
 
 export default {
   data(){
     return {
-      query: ''
+      query: '',
+      complete: false
     }
   },
   computed: {
     shop() {
       return this.$store.getters['shop/get_shop_list']
+    },
+    selectedItems() {
+      return this.$store.getters['cart/items']
+    },
+    prix() {
+      return this.$store.getters['cart/prix']
+    },
+    numberOfItems() {
+      return this.$store.getters['cart/numberOfItems']
     }
   },
   
@@ -84,6 +108,12 @@ export default {
       console.log(error);
     })
     
+  }, methods: {
+    ...mapMutations({
+      addToCart: 'cart/add',
+      removeFromCart: 'cart/remove',
+      emptyCart: 'cart/emptyList'
+    })
   }
 }
 </script>
