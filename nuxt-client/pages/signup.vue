@@ -11,7 +11,7 @@
                     <b-form-input
                         id="username"
                         v-model="username"
-                        type="username"
+                        type="text"
                         autofocus="true"
                         placeholder="Entrez votre nom d'utilisateur"
                         required/>
@@ -23,7 +23,7 @@
                         v-model="email"
                         type="email"
                         autofocus="true"
-                        placeholder="Enrez votre email"
+                        placeholder="Entrez votre email"
                         required/>
                    </div>
                 <div class="form-group">
@@ -63,6 +63,15 @@ export default {
             email: '',
             password: '',
             username: '',
+            // A Faire plus tard
+            // civilite : '',
+            // nom: '',
+            // prenom: '',
+            // adresse: '',
+            // complement_adresse: '',
+            // code_postale: '',
+            // ville: '',
+            // telephone: '',
             loading: false
         }
     },

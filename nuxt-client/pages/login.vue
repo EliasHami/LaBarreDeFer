@@ -3,13 +3,13 @@
     <div class="col-md-6 offset-md-3 mt-3">
       <form autocomplete="off" @submit.stop.prevent="handleSubmit">
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="loginID">Identifiant (Email ou Nom d'utilisateur)</label>
           <b-form-input
-            id="email"
-            v-model="email"
-            type="email"
+            id="loginID"
+            v-model="loginID"
+            type="text"
             autofocus="true"
-            placeholder="Entrez votre email"
+            placeholder="Entrez votre identifiant"
             required/>
         </div>
         <div class="form-group">
@@ -44,7 +44,7 @@ import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
-      email: '',
+      loginID: '',
       password: '',
       loading: false
     }
@@ -53,9 +53,10 @@ export default {
     async handleSubmit() {
       try {
         this.loading = true
-        const response = await strapi.login(this.email, this.password)
+        const response = await strapi.login(this.loginID, this.password)
         this.loading = false
         this.setUser(response.user)
+        // console.log(response.user)
         this.$router.push('/')
       } catch (err) {
         this.loading = false

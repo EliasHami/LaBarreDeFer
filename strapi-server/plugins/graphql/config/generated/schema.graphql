@@ -158,6 +158,21 @@ input editUserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+  adresse: String
+  code_postal: String
+  ville: String
+  pays: String
+  telephone: String
+  complement_adresse: String
+  Civilite: ENUM_USERSPERMISSIONSUSER_CIVILITE
+  nom: String
+  prenom: String
+}
+
+enum ENUM_USERSPERMISSIONSUSER_CIVILITE {
+  Monsieur
+  Madame
+  Mademoiselle
 }
 
 input FileInput {
@@ -351,6 +366,15 @@ input UserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+  adresse: String
+  code_postal: String
+  ville: String
+  pays: String
+  telephone: String
+  complement_adresse: String
+  Civilite: ENUM_USERSPERMISSIONSUSER_CIVILITE
+  nom: String
+  prenom: String
 }
 
 type UsersPermissionsMe {
@@ -396,4 +420,13 @@ type UsersPermissionsUser {
   confirmed: Boolean
   blocked: Boolean
   role: UsersPermissionsRole
+  adresse: String
+  code_postal: String
+  ville: String
+  pays: String
+  telephone: String
+  complement_adresse: String
+  Civilite: ENUM_USERSPERMISSIONSUSER_CIVILITE
+  nom: String
+  prenom: String
 }

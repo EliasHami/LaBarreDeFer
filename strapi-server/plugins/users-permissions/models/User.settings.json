@@ -48,6 +48,47 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "adresse": {
+      "default": "",
+      "type": "string"
+    },
+    "code_postal": {
+      "default": "",
+      "type": "string"
+    },
+    "ville": {
+      "default": "",
+      "type": "string"
+    },
+    "pays": {
+      "default": "",
+      "type": "string"
+    },
+    "telephone": {
+      "default": "",
+      "type": "string"
+    },
+    "complement_adresse": {
+      "default": "",
+      "type": "string"
+    },
+    "Civilite": {
+      "default": "",
+      "type": "enumeration",
+      "enum": [
+        "Monsieur",
+        "Madame",
+        "Mademoiselle"
+      ]
+    },
+    "nom": {
+      "default": "",
+      "type": "string"
+    },
+    "prenom": {
+      "default": "",
+      "type": "string"
     }
   },
   "collectionName": "users-permissions_user"

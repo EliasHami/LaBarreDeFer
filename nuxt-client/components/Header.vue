@@ -18,10 +18,10 @@
 
         <li v-if="username">
           <b-nav-item-dropdown :text="username" class="btn btn-outline-danger mr-3" right>
-            <b-dropdown-item>Mon compte</b-dropdown-item>
+            <b-dropdown-item :to="'/account'">Mon compte</b-dropdown-item>
             <b-dropdown-item>Mes favoris</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
-            <b-dropdown-item href="#" @click="logout">Deconnexion</b-dropdown-item>
+            <b-dropdown-item href="#" @click="deco">Deconnexion</b-dropdown-item>
           </b-nav-item-dropdown>
 
         </li>
@@ -50,6 +50,10 @@ export default {
     }
   },
   methods: {
+    deco() {
+      this.logout();
+      this.$router.push('/');
+    },
     ...mapMutations({
       logout: 'auth/logout'
     })

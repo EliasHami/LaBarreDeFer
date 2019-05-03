@@ -17,6 +17,7 @@
     "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.18",
     "cookieparser": "^0.1.0",
+    "email": "^0.2.6",
     "js-cookie": "^2.2.0",
     "nuxt": "^2.6.2",
     "popper.js": "^1.15.0",
